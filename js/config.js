@@ -12,9 +12,9 @@ window.APP_CONFIG = {
     "patient/Observation.read",
     "patient/ImagingStudy.read",
   ].join(" "),
-  redirectUri: "/app.html",
-  launchUri: "/launch.html",
-  reportUri: "/report.html",
+  redirectUri: "./app.html",
+  launchUri: "./launch.html",
+  reportUri: "./report.html",
   ldctReportCodeSystem: "http://your-org.tw/fhir/CodeSystem/ldct",
   ldctReportCode: "lung-rads-2022-report",
 };
