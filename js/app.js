@@ -27,6 +27,7 @@ const formatDate = (value) => {
 const formatPatientName = (patient) => {
   const name = patient.name && patient.name[0];
   if (!name) return "Unknown";
+  if (name.text) return name.text;
   const given = (name.given || []).join(" ");
   return [given, name.family].filter(Boolean).join(" ").trim();
 };
@@ -128,19 +129,31 @@ FHIR.oauth2
     }
 
     const patientPromise = client.request(`Patient/${patientId}`);
-    const reportQuery = [
-      "DiagnosticReport",
-      [
+    const buildReportQuery = (includeCode) => {
+      const params = [
         `patient=${encodeURIComponent(patientId)}`,
         "category=RAD,imaging",
-        `code=${encodeURIComponent(
-          `${APP_CONFIG.ldctReportCodeSystem}|${APP_CONFIG.ldctReportCode}`
-        )}`,
         "_sort=-date",
-      ].join("&"),
-    ].join("?");
+      ];
+      if (includeCode) {
+        params.splice(
+          2,
+          0,
+          `code=${encodeURIComponent(
+            `${APP_CONFIG.ldctReportCodeSystem}|${APP_CONFIG.ldctReportCode}`
+          )}`
+        );
+      }
+      return ["DiagnosticReport", params.join("&")].join("?");
+    };
 
-    const reportPromise = client.request(reportQuery);
+    const reportPromise = client.request(buildReportQuery(true)).then((bundle) => {
+      const entries = (bundle.entry || []).map((entry) => entry.resource);
+      if (entries.length) return bundle;
+      ui.status.textContent =
+        "No matching report code found. Retrying without code filter...";
+      return client.request(buildReportQuery(false));
+    });
 
     return Promise.all([patientPromise, reportPromise]).then(
       ([patient, bundle]) => {

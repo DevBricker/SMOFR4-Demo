@@ -32,6 +32,7 @@ const formatDate = (value) => {
 const formatPatientName = (patient) => {
   const name = patient.name && patient.name[0];
   if (!name) return "Unknown";
+  if (name.text) return name.text;
   const given = (name.given || []).join(" ");
   return [given, name.family].filter(Boolean).join(" ").trim();
 };
