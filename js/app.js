@@ -6,6 +6,8 @@ const ui = {
   status: document.getElementById("status"),
   fhirConnection: document.getElementById("fhir-connection"),
   fhirConnectionLabel: document.getElementById("fhir-connection-label"),
+  authWarning: document.getElementById("auth-warning"),
+  devModeButton: document.getElementById("dev-mode-button"),
 };
 
 const setConnection = (connected, message) => {
@@ -114,28 +116,7 @@ const renderReportCard = (client, report) => {
     });
 };
 
-FHIR.oauth2
-  .ready()
-  .then((client) => ({ client, patientId: client.patient.id }))
-  .catch((error) => {
-    if (APP_CONFIG.devMode) {
-      const client = FHIR.client({ serverUrl: APP_CONFIG.defaultIss });
-      ui.status.textContent =
-        "Dev mode enabled. Using patient " + APP_CONFIG.devPatientId + ".";
-      return { client, patientId: APP_CONFIG.devPatientId, dev: true };
-    }
-
-    if (error?.message?.includes("state")) {
-      ui.status.textContent =
-        "Missing SMART state. Please launch from launch.html to authenticate.";
-    } else {
-      ui.status.textContent = "Authorization failed.";
-    }
-    // eslint-disable-next-line no-console
-    console.error(error);
-    throw error;
-  })
-  .then(({ client, patientId }) => {
+const startApp = ({ client, patientId }) => {
     client
       .request("metadata")
       .then(() => setConnection(true, "FHIR connected"))
@@ -191,4 +172,27 @@ FHIR.oauth2
         ui.status.textContent = "";
       }
     );
+};
+
+FHIR.oauth2
+  .ready()
+  .then((client) => startApp({ client, patientId: client.patient.id }))
+  .catch((error) => {
+    if (error?.message?.includes("state")) {
+      ui.status.textContent = "Missing SMART state. Not authorized.";
+      if (ui.authWarning) ui.authWarning.style.display = "flex";
+      if (APP_CONFIG.devMode && ui.devModeButton) {
+        ui.devModeButton.addEventListener("click", () => {
+          ui.status.textContent =
+            "Dev mode enabled. Using patient " + APP_CONFIG.devPatientId + ".";
+          const client = FHIR.client({ serverUrl: APP_CONFIG.defaultIss });
+          startApp({ client, patientId: APP_CONFIG.devPatientId });
+        });
+      }
+      return;
+    }
+
+    ui.status.textContent = "Authorization failed.";
+    // eslint-disable-next-line no-console
+    console.error(error);
   });

@@ -217,6 +217,13 @@ a {
   gap: 12px;
 }
 
+.auth-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
 .field {
   display: flex;
   flex-direction: column;

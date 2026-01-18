@@ -25,6 +25,15 @@
         <span class="connection-dot" aria-hidden="true"></span>
         <span id="fhir-connection-label">FHIR disconnected</span>
       </div>
+      <section class="card auth-warning" id="auth-warning" style="display: none;">
+        <div class="section-title">Unauthorized</div>
+        <div class="patient-meta">
+          SMART state is missing. Please launch from launch.html or use Dev Mode.
+        </div>
+        <button id="dev-mode-button" class="pill-link" type="button">
+          Use Dev Mode
+        </button>
+      </section>
 
       <section class="card patient-card">
         <div id="patient-name" class="patient-name">Loading...</div>

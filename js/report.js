@@ -11,6 +11,8 @@ const ui = {
   pdfLink: document.getElementById("pdf-link"),
   fhirConnection: document.getElementById("fhir-connection"),
   fhirConnectionLabel: document.getElementById("fhir-connection-label"),
+  authWarning: document.getElementById("auth-warning"),
+  devModeButton: document.getElementById("dev-mode-button"),
 };
 
 const setConnection = (connected, message) => {
@@ -199,9 +201,7 @@ const renderDoseInfo = (summary) => {
   });
 };
 
-FHIR.oauth2
-  .ready()
-  .then((client) => {
+const startReport = (client) => {
     client
       .request("metadata")
       .then(() => setConnection(true, "FHIR connected"))
@@ -289,8 +289,25 @@ FHIR.oauth2
         }
       );
     });
-  })
+};
+
+FHIR.oauth2
+  .ready()
+  .then((client) => startReport(client))
   .catch((error) => {
+    if (error?.message?.includes("state")) {
+      ui.status.textContent = "Missing SMART state. Not authorized.";
+      if (ui.authWarning) ui.authWarning.style.display = "flex";
+      if (APP_CONFIG.devMode && ui.devModeButton) {
+        ui.devModeButton.addEventListener("click", () => {
+          ui.status.textContent = "Dev mode enabled.";
+          const client = FHIR.client({ serverUrl: APP_CONFIG.defaultIss });
+          startReport(client);
+        });
+      }
+      return;
+    }
+
     ui.status.textContent = "Failed to load report.";
     // eslint-disable-next-line no-console
     console.error(error);
