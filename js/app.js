@@ -132,7 +132,7 @@ FHIR.oauth2
       "DiagnosticReport",
       [
         `patient=${encodeURIComponent(patientId)}`,
-        "category=imaging",
+        "category=RAD,imaging",
         `code=${encodeURIComponent(
           `${APP_CONFIG.ldctReportCodeSystem}|${APP_CONFIG.ldctReportCode}`
         )}`,
