@@ -1,0 +1,204 @@
+:root {
+  --ink: #0c1622;
+  --muted: #5a6672;
+  --accent: #f05f57;
+  --accent-dark: #c84b43;
+  --surface: #f7f3ee;
+  --surface-strong: #ffffff;
+  --line: #e3dbd0;
+  --shadow: rgba(12, 22, 34, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fff1e6 0%, #f3eee8 45%, #e7ecef 100%);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.title {
+  font-family: "IBM Plex Serif", "Georgia", serif;
+  font-size: 32px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.card {
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.patient-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.patient-name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.patient-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.status {
+  color: var(--muted);
+  margin: 16px 0;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.report-card {
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff, #fbf1e6);
+  padding: 18px;
+  border: 1px solid #f1e3d6;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(240, 95, 87, 0.12);
+}
+
+.report-date {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.report-rads {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+.report-meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.section {
+  margin: 24px 0;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.report-hero {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.lung-rads {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.dose-row,
+.nodule-row {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.nodule-card {
+  border: 1px solid #f1e3d6;
+  background: #fff8f1;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(240, 95, 87, 0.08);
+}
+
+.nodule-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pill-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.pill-link:hover {
+  background: var(--accent-dark);
+}
+
+.footer {
+  margin-top: 32px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 26px;
+  }
+
+  .report-rads {
+    font-size: 24px;
+  }
+
+  .lung-rads {
+    font-size: 32px;
+  }
+}

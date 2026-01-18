@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LDCT Lung-RADS Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:wght@600&display=swap"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+    <script src="/js/config.js" defer></script>
+    <script src="/js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="eyebrow">Patient Summary</div>
+        <h1 class="title">LDCT Lung-RADS Reports</h1>
+        <p class="subtitle">Read-only report viewer</p>
+      </header>
+
+      <section class="card patient-card">
+        <div id="patient-name" class="patient-name">Loading...</div>
+        <div id="patient-meta" class="patient-meta"></div>
+      </section>
+
+      <div id="status" class="status"></div>
+
+      <section class="section">
+        <div class="section-title">Report List</div>
+        <div id="report-list" class="report-grid"></div>
+      </section>
+
+      <div class="footer">SMART on FHIR EHR Launch • LDCT Lung-RADS v2022</div>
+    </div>
+  </body>
+</html>
