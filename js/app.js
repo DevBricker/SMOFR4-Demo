@@ -116,13 +116,31 @@ const renderReportCard = (client, report) => {
 
 FHIR.oauth2
   .ready()
-  .then((client) => {
+  .then((client) => ({ client, patientId: client.patient.id }))
+  .catch((error) => {
+    if (APP_CONFIG.devMode) {
+      const client = FHIR.client({ serverUrl: APP_CONFIG.defaultIss });
+      ui.status.textContent =
+        "Dev mode enabled. Using patient " + APP_CONFIG.devPatientId + ".";
+      return { client, patientId: APP_CONFIG.devPatientId, dev: true };
+    }
+
+    if (error?.message?.includes("state")) {
+      ui.status.textContent =
+        "Missing SMART state. Please launch from launch.html to authenticate.";
+    } else {
+      ui.status.textContent = "Authorization failed.";
+    }
+    // eslint-disable-next-line no-console
+    console.error(error);
+    throw error;
+  })
+  .then(({ client, patientId }) => {
     client
       .request("metadata")
       .then(() => setConnection(true, "FHIR connected"))
       .catch(() => setConnection(false, "FHIR disconnected"));
     ui.status.textContent = "Loading patient and reports...";
-    const patientId = client.patient.id;
     if (!patientId) {
       ui.status.textContent = "Missing patient context.";
       return;
@@ -173,9 +191,4 @@ FHIR.oauth2
         ui.status.textContent = "";
       }
     );
-  })
-  .catch((error) => {
-    ui.status.textContent = "Authorization failed.";
-    // eslint-disable-next-line no-console
-    console.error(error);
   });
