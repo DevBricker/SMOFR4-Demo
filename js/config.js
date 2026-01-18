@@ -17,4 +17,5 @@ window.APP_CONFIG = {
   reportUri: "./report.html",
   ldctReportCodeSystem: "http://your-org.tw/fhir/CodeSystem/ldct",
   ldctReportCode: "lung-rads-2022-report",
+  defaultIss: "https://thas.mohw.gov.tw/v/r4/fhir",
 };

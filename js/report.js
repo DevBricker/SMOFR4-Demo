@@ -9,6 +9,17 @@ const ui = {
   nodules: document.getElementById("nodules"),
   otherFindings: document.getElementById("other-findings"),
   pdfLink: document.getElementById("pdf-link"),
+  fhirConnection: document.getElementById("fhir-connection"),
+  fhirConnectionLabel: document.getElementById("fhir-connection-label"),
+};
+
+const setConnection = (connected, message) => {
+  if (!ui.fhirConnection) return;
+  ui.fhirConnection.classList.toggle("connected", connected);
+  ui.fhirConnection.classList.toggle("disconnected", !connected);
+  if (ui.fhirConnectionLabel) {
+    ui.fhirConnectionLabel.textContent = message;
+  }
 };
 
 const formatDate = (value) => {
@@ -190,6 +201,10 @@ const renderDoseInfo = (summary) => {
 FHIR.oauth2
   .ready()
   .then((client) => {
+    client
+      .request("metadata")
+      .then(() => setConnection(true, "FHIR connected"))
+      .catch(() => setConnection(false, "FHIR disconnected"));
     const params = new URLSearchParams(window.location.search);
     const reportId = params.get("id");
     if (!reportId) {

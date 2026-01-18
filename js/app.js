@@ -4,6 +4,17 @@ const ui = {
   patientMeta: document.getElementById("patient-meta"),
   reportList: document.getElementById("report-list"),
   status: document.getElementById("status"),
+  fhirConnection: document.getElementById("fhir-connection"),
+  fhirConnectionLabel: document.getElementById("fhir-connection-label"),
+};
+
+const setConnection = (connected, message) => {
+  if (!ui.fhirConnection) return;
+  ui.fhirConnection.classList.toggle("connected", connected);
+  ui.fhirConnection.classList.toggle("disconnected", !connected);
+  if (ui.fhirConnectionLabel) {
+    ui.fhirConnectionLabel.textContent = message;
+  }
 };
 
 const formatDate = (value) => {
@@ -105,6 +116,10 @@ const renderReportCard = (client, report) => {
 FHIR.oauth2
   .ready()
   .then((client) => {
+    client
+      .request("metadata")
+      .then(() => setConnection(true, "FHIR connected"))
+      .catch(() => setConnection(false, "FHIR disconnected"));
     ui.status.textContent = "Loading patient and reports...";
     const patientId = client.patient.id;
     if (!patientId) {

@@ -21,9 +21,28 @@
         <h1 class="title">LDCT Lung-RADS App</h1>
         <p class="subtitle">Launching with patient context</p>
       </header>
+      <div id="fhir-connection" class="connection-indicator disconnected">
+        <span class="connection-dot" aria-hidden="true"></span>
+        <span id="fhir-connection-label">FHIR disconnected</span>
+      </div>
       <div class="card">
         <div id="status" class="status">Waiting for launch...</div>
       </div>
+      <section class="card simulator-card" id="launch-simulator">
+        <div class="section-title">Launch Simulator</div>
+        <label class="field">
+          <span>FHIR Server (iss)</span>
+          <input id="iss-input" type="url" placeholder="https://.../fhir" />
+        </label>
+        <label class="field">
+          <span>Launch context (launch)</span>
+          <input id="launch-input" type="text" placeholder="Optional" />
+        </label>
+        <button id="launch-button" class="pill-link" type="button">
+          Start Launch
+        </button>
+        <div class="hint">If your sandbox requires EHR launch, provide both iss and launch.</div>
+      </section>
     </div>
   </body>
 </html>
