@@ -1,12 +1,12 @@
 :root {
-  --ink: #0c1622;
-  --muted: #5a6672;
-  --accent: #f05f57;
-  --accent-dark: #c84b43;
-  --surface: #f7f3ee;
-  --surface-strong: #ffffff;
-  --line: #e3dbd0;
-  --shadow: rgba(12, 22, 34, 0.08);
+  --ink: #e6edf5;
+  --muted: #9aa6b2;
+  --accent: #27d17f;
+  --accent-dark: #1fa969;
+  --surface: #111827;
+  --surface-strong: #1b2230;
+  --line: #2b3446;
+  --shadow: rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at top, #fff1e6 0%, #f3eee8 45%, #e7ecef 100%);
+  background: radial-gradient(circle at top, #1c2433 0%, #0e121a 55%, #0a0d14 100%);
   min-height: 100vh;
 }
 
@@ -96,9 +96,9 @@ a {
 
 .report-card {
   border-radius: 18px;
-  background: linear-gradient(135deg, #fff, #fbf1e6);
+  background: linear-gradient(135deg, #1f2838, #151b27);
   padding: 18px;
-  border: 1px solid #f1e3d6;
+  border: 1px solid #2a3345;
   min-height: 140px;
   display: flex;
   flex-direction: column;
@@ -108,7 +108,7 @@ a {
 
 .report-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(240, 95, 87, 0.12);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.4);
 }
 
 .report-date {
@@ -119,7 +119,7 @@ a {
 .report-rads {
   font-size: 28px;
   font-weight: 700;
-  color: var(--accent-dark);
+  color: var(--accent);
 }
 
 .report-meta {
@@ -156,11 +156,11 @@ a {
 }
 
 .nodule-card {
-  border: 1px solid #f1e3d6;
-  background: #fff8f1;
+  border: 1px solid #2a3345;
+  background: #161c28;
   border-radius: 14px;
   padding: 16px;
-  box-shadow: 0 10px 20px rgba(240, 95, 87, 0.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
 .nodule-title {
@@ -174,7 +174,7 @@ a {
   padding: 8px 14px;
   border-radius: 999px;
   background: var(--accent);
-  color: #fff;
+  color: #0d1b16;
   font-size: 13px;
   margin-top: 8px;
 }
@@ -203,7 +203,7 @@ a {
   height: 10px;
   border-radius: 50%;
   background: #d9534f;
-  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.15);
+  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.35);
 }
 
 .connection-indicator.connected .connection-dot {
@@ -238,6 +238,50 @@ a {
   padding: 10px 12px;
   font-size: 14px;
   font-family: inherit;
+  background: #111827;
+  color: var(--ink);
+}
+
+.nodule-details {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nodule-detail-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.data-table {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #121826;
+}
+
+.data-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(180px, 2fr);
+  gap: 12px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.data-row:first-child {
+  border-top: none;
+}
+
+.data-label {
+  color: var(--muted);
+}
+
+.data-value {
+  color: var(--ink);
+  text-align: right;
 }
 
 .hint {
