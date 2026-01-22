@@ -8,6 +8,8 @@ const ui = {
   doseInfo: document.getElementById("dose-info"),
   nodules: document.getElementById("nodules"),
   otherFindings: document.getElementById("other-findings"),
+  reportText: document.getElementById("report-text"),
+  reportTextSection: document.getElementById("report-text-section"),
   pdfLink: document.getElementById("pdf-link"),
   fhirConnection: document.getElementById("fhir-connection"),
   fhirConnectionLabel: document.getElementById("fhir-connection-label"),
@@ -374,6 +376,13 @@ const renderReportData = ({ patient, report, observations }) => {
   ui.otherFindings.textContent = other.length
     ? other.join("; ")
     : "No other findings.";
+
+  if (report.text && report.text.div && ui.reportText && ui.reportTextSection) {
+    ui.reportText.innerHTML = report.text.div;
+    ui.reportTextSection.style.display = "block";
+  } else if (ui.reportTextSection) {
+    ui.reportTextSection.style.display = "none";
+  }
 
   if (
     Array.isArray(report.presentedForm) &&
