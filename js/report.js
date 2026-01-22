@@ -163,6 +163,16 @@ const NODULE_DETAIL_GROUPS = [
     ],
   },
   {
+    title: "General",
+    fields: [
+      { key: "maxDiameter", label: "max_diameter", patterns: ["max diameter"] },
+      { key: "radius", label: "radius", patterns: ["radius"] },
+      { key: "maxRadius", label: "max_radius", patterns: ["max radius"] },
+      { key: "perpDiameter", label: "perp_diameter", patterns: ["perp diameter"] },
+      { key: "slice", label: "slice", patterns: ["slice"] },
+    ],
+  },
+  {
     title: "Axial 橫切面",
     fields: [
       { key: "axialMaxDiameter", label: "axial max_diameter", patterns: ["axial max diameter"] },
