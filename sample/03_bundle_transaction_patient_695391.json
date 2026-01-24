@@ -3,10 +3,10 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "urn:uuid:patient-695391",
+      "fullUrl": "urn:uuid:patient-p695390",
       "resource": {
         "resourceType": "Patient",
-        "id": "695391",
+        "id": "p-695390",
         "name": [
           {
             "text": "陳小慧",
@@ -21,14 +21,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Patient/695391"
+        "url": "Patient/p-695390"
       }
     },
     {
-      "fullUrl": "urn:uuid:diagnosticreport-695391",
+      "fullUrl": "urn:uuid:diagnosticreport-dr695390",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "695391",
+        "id": "dr-695390",
         "status": "final",
         "category": [
           {
@@ -52,7 +52,7 @@
           "text": "LDCT Lung Cancer Screening Report"
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "issued": "2026-01-18T12:00:00+08:00",
@@ -63,32 +63,32 @@
         },
         "result": [
           {
-            "reference": "Observation/695392"
+            "reference": "Observation/o-695392"
           },
           {
-            "reference": "Observation/695393"
+            "reference": "Observation/o-695393"
           },
           {
-            "reference": "Observation/695394"
+            "reference": "Observation/o-695394"
           },
           {
-            "reference": "Observation/695395"
+            "reference": "Observation/o-695395"
           },
           {
-            "reference": "Observation/695396"
+            "reference": "Observation/o-695396"
           }
         ]
       },
       "request": {
         "method": "PUT",
-        "url": "DiagnosticReport/695391"
+        "url": "DiagnosticReport/dr-695390"
       }
     },
     {
-      "fullUrl": "urn:uuid:obs-lung-rads-695392",
+      "fullUrl": "urn:uuid:obs-lung-rads-o695392",
       "resource": {
         "resourceType": "Observation",
-        "id": "695392",
+        "id": "o-695392",
         "status": "final",
         "category": [
           {
@@ -111,7 +111,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueCodeableConcept": {
@@ -127,14 +127,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/695392"
+        "url": "Observation/o-695392"
       }
     },
     {
-      "fullUrl": "urn:uuid:obs-nodule-presence-695393",
+      "fullUrl": "urn:uuid:obs-nodule-presence-o695393",
       "resource": {
         "resourceType": "Observation",
-        "id": "695393",
+        "id": "o-695393",
         "status": "final",
         "category": [
           {
@@ -158,21 +158,21 @@
           "text": "Pulmonary nodule presence"
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueBoolean": true
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/695393"
+        "url": "Observation/o-695393"
       }
     },
     {
-      "fullUrl": "urn:uuid:obs-nodule-1-695394",
+      "fullUrl": "urn:uuid:obs-nodule-1-o695394",
       "resource": {
         "resourceType": "Observation",
-        "id": "695394",
+        "id": "o-695394",
         "status": "final",
         "category": [
           {
@@ -196,7 +196,7 @@
           "text": "Most suspicious lung nodule #1"
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "component": [
@@ -444,14 +444,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/695394"
+        "url": "Observation/o-695394"
       }
     },
     {
-      "fullUrl": "urn:uuid:obs-ctdivol-695395",
+      "fullUrl": "urn:uuid:obs-ctdivol-o695395",
       "resource": {
         "resourceType": "Observation",
-        "id": "695395",
+        "id": "o-695395",
         "status": "final",
         "category": [
           {
@@ -474,7 +474,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueQuantity": {
@@ -486,14 +486,14 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/695395"
+        "url": "Observation/o-695395"
       }
     },
     {
-      "fullUrl": "urn:uuid:obs-dlp-695396",
+      "fullUrl": "urn:uuid:obs-dlp-o695396",
       "resource": {
         "resourceType": "Observation",
-        "id": "695396",
+        "id": "o-695396",
         "status": "final",
         "category": [
           {
@@ -516,7 +516,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/695391"
+          "reference": "Patient/p-695390"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueQuantity": {
@@ -528,7 +528,7 @@
       },
       "request": {
         "method": "PUT",
-        "url": "Observation/695396"
+        "url": "Observation/o-695396"
       }
     }
   ]
