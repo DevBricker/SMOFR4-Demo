@@ -6,7 +6,6 @@
       "fullUrl": "urn:uuid:patient-1",
       "resource": {
         "resourceType": "Patient",
-        "id": "patient-1",
         "name": [
           {
             "text": "陳小慧",
@@ -28,7 +27,6 @@
       "fullUrl": "urn:uuid:diagnosticreport-1",
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "diagnosticreport-1",
         "status": "final",
         "category": [
           {
@@ -52,26 +50,26 @@
           "text": "LDCT Lung Cancer Screening Report"
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "issued": "2026-01-18T12:00:00+08:00",
         "conclusion": "See Observations for structured Lung-RADS and nodule details.",
         "result": [
           {
-            "reference": "Observation/obs-lung-rads"
+            "reference": "urn:uuid:obs-lung-rads"
           },
           {
-            "reference": "Observation/obs-nodule-presence"
+            "reference": "urn:uuid:obs-nodule-presence"
           },
           {
-            "reference": "Observation/obs-nodule-1"
+            "reference": "urn:uuid:obs-nodule-1"
           },
           {
-            "reference": "Observation/obs-ctdivol"
+            "reference": "urn:uuid:obs-ctdivol"
           },
           {
-            "reference": "Observation/obs-dlp"
+            "reference": "urn:uuid:obs-dlp"
           }
         ]
       },
@@ -84,7 +82,6 @@
       "fullUrl": "urn:uuid:obs-lung-rads",
       "resource": {
         "resourceType": "Observation",
-        "id": "obs-lung-rads",
         "status": "final",
         "category": [
           {
@@ -107,7 +104,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueCodeableConcept": {
@@ -130,7 +127,6 @@
       "fullUrl": "urn:uuid:obs-nodule-presence",
       "resource": {
         "resourceType": "Observation",
-        "id": "obs-nodule-presence",
         "status": "final",
         "category": [
           {
@@ -154,7 +150,7 @@
           "text": "Pulmonary nodule presence"
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueBoolean": true
@@ -168,7 +164,6 @@
       "fullUrl": "urn:uuid:obs-nodule-1",
       "resource": {
         "resourceType": "Observation",
-        "id": "obs-nodule-1",
         "status": "final",
         "category": [
           {
@@ -192,7 +187,7 @@
           "text": "Most suspicious lung nodule #1"
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "component": [
@@ -447,7 +442,6 @@
       "fullUrl": "urn:uuid:obs-ctdivol",
       "resource": {
         "resourceType": "Observation",
-        "id": "obs-ctdivol",
         "status": "final",
         "category": [
           {
@@ -470,7 +464,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueQuantity": {
@@ -489,7 +483,6 @@
       "fullUrl": "urn:uuid:obs-dlp",
       "resource": {
         "resourceType": "Observation",
-        "id": "obs-dlp",
         "status": "final",
         "category": [
           {
@@ -512,7 +505,7 @@
           ]
         },
         "subject": {
-          "reference": "Patient/patient-1"
+          "reference": "urn:uuid:patient-1"
         },
         "effectiveDateTime": "2026-01-18T10:30:00+08:00",
         "valueQuantity": {

@@ -3,7 +3,7 @@ LDCT Lung-RADS 測試資料（Postman 用）
 順序
 方式 A：一次 POST Bundle（建議）
 1) POST 00_bundle_transaction.json 到 [base]
-2) POST 02_bundle_transaction_full_fields.json 到 [base]（含所有結節欄位）
+2) POST 02_bundle_transaction_full_fields.json 到 [base]（含所有結節欄位、自動 ID）
 
 方式 B：逐筆 POST/PUT
 1) POST 01_patient.json
