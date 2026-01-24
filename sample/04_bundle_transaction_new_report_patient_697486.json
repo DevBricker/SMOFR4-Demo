@@ -1,0 +1,507 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:diagnosticreport-new-697486",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://your-org.tw/fhir/CodeSystem/ldct",
+              "code": "lung-rads-2022-report",
+              "display": "LDCT Lung Cancer Screening Report (Lung-RADS v2022)"
+            }
+          ],
+          "text": "LDCT Lung Cancer Screening Report"
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "issued": "2026-01-18T12:00:00+08:00",
+        "conclusion": "See Observations for structured Lung-RADS and nodule details.",
+        "text": {
+          "status": "generated",
+          "div": "<div><table border=\"1\" cellpadding=\"4\" cellspacing=\"0\"><tr><th>Field</th><th>Value</th></tr><tr><td>original_spacing_x</td><td>122.5 px</td></tr><tr><td>original_spacing_y</td><td>84.2 px</td></tr><tr><td>original_spacing_z</td><td>32.0 px</td></tr><tr><td>axial max_diameter</td><td>7.2 mm</td></tr><tr><td>axial radius</td><td>3.6 mm</td></tr><tr><td>axial max_radius</td><td>4.0 mm</td></tr><tr><td>axial perp_diameter</td><td>6.8 mm</td></tr><tr><td>axial slice</td><td>157</td></tr><tr><td>coronal max_diameter</td><td>7.0 mm</td></tr><tr><td>coronal radius</td><td>3.5 mm</td></tr><tr><td>coronal max_radius</td><td>3.9 mm</td></tr><tr><td>coronal perp_diameter</td><td>6.5 mm</td></tr><tr><td>coronal slice</td><td>148</td></tr><tr><td>solid_part</td><td>3.1 mm</td></tr><tr><td>texture</td><td>part-solid</td></tr><tr><td>volume</td><td>210 mm3</td></tr><tr><td>location</td><td>RUL</td></tr><tr><td>malignancy</td><td>2/5</td></tr><tr><td>margin</td><td>spiculated</td></tr><tr><td>follow_up_info</td><td>Stable compared to 2024-06-10</td></tr><tr><td>volume_change</td><td>5 mm3</td></tr><tr><td>volume_doubling_time</td><td>420 days</td></tr><tr><td>description</td><td>stable</td></tr><tr><td>lungRADS</td><td>2</td></tr><tr><td>cac_score</td><td>0 Agatston</td></tr></table></div>"
+        },
+        "result": [
+          {
+            "reference": "urn:uuid:obs-lung-rads-697486"
+          },
+          {
+            "reference": "urn:uuid:obs-nodule-presence-697486"
+          },
+          {
+            "reference": "urn:uuid:obs-nodule-1-697486"
+          },
+          {
+            "reference": "urn:uuid:obs-ctdivol-697486"
+          },
+          {
+            "reference": "urn:uuid:obs-dlp-697486"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-lung-rads-697486",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://radlex.org",
+              "code": "RID50134",
+              "display": "Lung-RADS assessment"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://radlex.org",
+              "code": "RID50137",
+              "display": "Lung-RADS 2"
+            }
+          ],
+          "text": "Lung-RADS v2022 Category 2"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-nodule-presence-697486",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "786838002",
+              "display": "Pulmonary nodule"
+            }
+          ],
+          "text": "Pulmonary nodule presence"
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "valueBoolean": true
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-nodule-1-697486",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "786838002",
+              "display": "Pulmonary nodule"
+            }
+          ],
+          "text": "Most suspicious lung nodule #1"
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "component": [
+          {
+            "code": {
+              "text": "max_diameter"
+            },
+            "valueQuantity": {
+              "value": 7.2,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "radius"
+            },
+            "valueQuantity": {
+              "value": 3.6,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "max_radius"
+            },
+            "valueQuantity": {
+              "value": 4.0,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "perp_diameter"
+            },
+            "valueQuantity": {
+              "value": 6.8,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "slice"
+            },
+            "valueInteger": 157
+          },
+          {
+            "code": {
+              "text": "original_spacing_x"
+            },
+            "valueQuantity": {
+              "value": 122.5,
+              "unit": "px"
+            }
+          },
+          {
+            "code": {
+              "text": "original_spacing_y"
+            },
+            "valueQuantity": {
+              "value": 84.2,
+              "unit": "px"
+            }
+          },
+          {
+            "code": {
+              "text": "original_spacing_z"
+            },
+            "valueQuantity": {
+              "value": 32.0,
+              "unit": "px"
+            }
+          },
+          {
+            "code": {
+              "text": "axial max_diameter"
+            },
+            "valueQuantity": {
+              "value": 7.2,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "axial radius"
+            },
+            "valueQuantity": {
+              "value": 3.6,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "axial max_radius"
+            },
+            "valueQuantity": {
+              "value": 4.0,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "axial perp_diameter"
+            },
+            "valueQuantity": {
+              "value": 6.8,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "axial slice"
+            },
+            "valueInteger": 157
+          },
+          {
+            "code": {
+              "text": "coronal max_diameter"
+            },
+            "valueQuantity": {
+              "value": 7.0,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "coronal radius"
+            },
+            "valueQuantity": {
+              "value": 3.5,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "coronal max_radius"
+            },
+            "valueQuantity": {
+              "value": 3.9,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "coronal perp_diameter"
+            },
+            "valueQuantity": {
+              "value": 6.5,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "coronal slice"
+            },
+            "valueInteger": 148
+          },
+          {
+            "code": {
+              "text": "solid_part"
+            },
+            "valueQuantity": {
+              "value": 3.1,
+              "unit": "mm"
+            }
+          },
+          {
+            "code": {
+              "text": "texture"
+            },
+            "valueString": "part-solid"
+          },
+          {
+            "code": {
+              "text": "volume"
+            },
+            "valueQuantity": {
+              "value": 210,
+              "unit": "mm3"
+            }
+          },
+          {
+            "code": {
+              "text": "location"
+            },
+            "valueString": "RUL"
+          },
+          {
+            "code": {
+              "text": "malignancy"
+            },
+            "valueString": "2/5"
+          },
+          {
+            "code": {
+              "text": "margin"
+            },
+            "valueString": "spiculated"
+          },
+          {
+            "code": {
+              "text": "follow_up_info"
+            },
+            "valueString": "Stable compared to 2024-06-10"
+          },
+          {
+            "code": {
+              "text": "volume_change"
+            },
+            "valueQuantity": {
+              "value": 5,
+              "unit": "mm3"
+            }
+          },
+          {
+            "code": {
+              "text": "volume_doubling_time"
+            },
+            "valueQuantity": {
+              "value": 420,
+              "unit": "days"
+            }
+          },
+          {
+            "code": {
+              "text": "description"
+            },
+            "valueString": "stable"
+          },
+          {
+            "code": {
+              "text": "lungRADS"
+            },
+            "valueString": "2"
+          },
+          {
+            "code": {
+              "text": "cac_score"
+            },
+            "valueQuantity": {
+              "value": 0,
+              "unit": "Agatston"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-ctdivol-697486",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "113830",
+              "display": "Mean CTDIvol"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "valueQuantity": {
+          "value": 1.2,
+          "unit": "mGy",
+          "system": "http://unitsofmeasure.org",
+          "code": "mGy"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:obs-dlp-697486",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "imaging",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "113813",
+              "display": "CT Dose Length Product Total"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/697486"
+        },
+        "effectiveDateTime": "2026-01-18T10:30:00+08:00",
+        "valueQuantity": {
+          "value": 42.0,
+          "unit": "mGy*cm",
+          "system": "http://unitsofmeasure.org",
+          "code": "mGy.cm"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}
