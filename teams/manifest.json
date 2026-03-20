@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "packageName": "tw.gov.mohw.ldct.lungrads",
+  "developer": {
+    "name": "MOHW LDCT Demo",
+    "websiteUrl": "https://devbricker.github.io/SMOFR4-Demo/",
+    "privacyUrl": "https://devbricker.github.io/SMOFR4-Demo/",
+    "termsOfUseUrl": "https://devbricker.github.io/SMOFR4-Demo/"
+  },
+  "name": {
+    "short": "LDCT Lung-RADS",
+    "full": "LDCT Lung-RADS SMART on FHIR App"
+  },
+  "description": {
+    "short": "LDCT Lung-RADS report viewer via SMART on FHIR",
+    "full": "A read-only SMART on FHIR EHR launch app for viewing LDCT Lung-RADS v2022 diagnostic reports within Microsoft Teams."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#27d17f",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://devbricker.github.io/SMOFR4-Demo/teams/tab-config.html",
+      "canUpdateConfiguration": true,
+      "scopes": ["team", "groupchat"],
+      "context": [
+        "channelTab",
+        "privateChatTab",
+        "meetingChatTab",
+        "meetingDetailsTab",
+        "meetingSidePanel"
+      ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "ldct-lungrads-app",
+      "name": "Lung-RADS App",
+      "contentUrl": "https://devbricker.github.io/SMOFR4-Demo/app.html",
+      "websiteUrl": "https://devbricker.github.io/SMOFR4-Demo/app.html",
+      "scopes": ["personal"]
+    },
+    {
+      "entityId": "ldct-lungrads-launch",
+      "name": "Launch",
+      "contentUrl": "https://devbricker.github.io/SMOFR4-Demo/launch.html",
+      "websiteUrl": "https://devbricker.github.io/SMOFR4-Demo/launch.html",
+      "scopes": ["personal"]
+    }
+  ],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": [
+    "devbricker.github.io",
+    "thas.mohw.gov.tw"
+  ]
+}

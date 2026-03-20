@@ -65,3 +65,25 @@ App 會自動完成 OAuth，跳轉到 app.html 並載入病人資料與報告。
 
 版本
 - 日期：2026-01-18
+
+---
+
+Microsoft Teams Demo 說明
+
+此分支（teams-demo）新增 Teams App 整合，位於 teams/ 目錄：
+
+teams/manifest.json
+  - Microsoft Teams App 清單（manifest version 1.16）
+  - 包含 Static Tab（個人用途）與 Configurable Tab（頻道 / 群組聊天）
+  - 設定完成後可直接打包成 .zip 上傳至 Teams 管理中心
+
+teams/tab-config.html
+  - Teams Tab 設定頁面（configurationUrl）
+  - 使用者可輸入 FHIR Base URL 並選擇要顯示的頁面（app.html 或 launch.html）
+  - 依賴 Microsoft Teams JS SDK 2.22.0
+
+部署 Teams App 步驟
+1. 準備 32×32 outline.png 與 192×192 color.png 放入 teams/ 目錄
+2. 將 teams/ 目錄內所有檔案壓縮成 teams-app.zip
+3. 至 Microsoft Teams 管理中心或 Teams 用戶端上傳自訂 App
+4. 在頻道或聊天中新增 Tab，選擇「LDCT Lung-RADS」，設定 FHIR Server URL 後儲存
