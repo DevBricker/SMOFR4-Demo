@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LDCT Lung-RADS — Teams Tab Configuration</title>
+    <script src="https://res.cdn.office.net/teams-js/2.22.0/js/MicrosoftTeams.min.js"></script>
+    <style>
+      :root {
+        --ink: #e6edf5;
+        --muted: #9aa6b2;
+        --accent: #27d17f;
+        --accent-dark: #1fa969;
+        --surface: #111827;
+        --surface-strong: #1b2230;
+        --line: #2b3446;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "IBM Plex Sans", sans-serif;
+        background: #111827;
+        color: #e6edf5;
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 32px 20px;
+      }
+
+      .config-shell {
+        width: 100%;
+        max-width: 560px;
+      }
+
+      .config-header {
+        margin-bottom: 24px;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin: 0 0 4px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .card {
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+
+      .field:last-child {
+        margin-bottom: 0;
+      }
+
+      .field input,
+      .field select {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 14px;
+        font-family: inherit;
+        background: #111827;
+        color: var(--ink);
+        width: 100%;
+      }
+
+      .field input:focus,
+      .field select:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      #status {
+        font-size: 13px;
+        color: var(--muted);
+        min-height: 20px;
+        margin-top: 8px;
+      }
+
+      #status.error {
+        color: #e05c5c;
+      }
+
+      #status.ok {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="config-shell">
+      <div class="config-header">
+        <div class="eyebrow">Microsoft Teams · SMART on FHIR</div>
+        <h1>LDCT Lung-RADS Tab</h1>
+        <p class="subtitle">Configure the tab to connect to your FHIR server.</p>
+      </div>
+
+      <div class="card">
+        <div class="section-title">FHIR Server Settings</div>
+
+        <label class="field">
+          <span>FHIR Base URL (iss)</span>
+          <input
+            id="iss-input"
+            type="url"
+            placeholder="https://your-fhir-server/r4/fhir"
+            value="https://thas.mohw.gov.tw/v/r4/fhir"
+          />
+        </label>
+
+        <label class="field">
+          <span>View</span>
+          <select id="view-select">
+            <option value="app">Patient Dashboard (app.html)</option>
+            <option value="launch">EHR Launch (launch.html)</option>
+          </select>
+        </label>
+
+        <div id="status">Waiting for Teams SDK…</div>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const issInput = document.getElementById("iss-input");
+        const viewSelect = document.getElementById("view-select");
+        const statusEl = document.getElementById("status");
+
+        const BASE = "https://devbricker.github.io/SMOFR4-Demo/";
+        const PAGES = {
+          app: BASE + "app.html",
+          launch: BASE + "launch.html",
+        };
+
+        const buildContentUrl = () => {
+          const view = viewSelect.value;
+          const iss = issInput.value.trim();
+          let url = PAGES[view] || PAGES.app;
+          if (view === "launch" && iss) {
+            url += "?iss=" + encodeURIComponent(iss);
+          }
+          return url;
+        };
+
+        microsoftTeams.app.initialize().then(() => {
+          statusEl.textContent = "Teams SDK ready.";
+          statusEl.className = "ok";
+
+          microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+            const contentUrl = buildContentUrl();
+            microsoftTeams.pages.config
+              .setConfig({
+                suggestedDisplayName: "Lung-RADS",
+                entityId: "ldct-lungrads-tab",
+                contentUrl,
+                websiteUrl: contentUrl,
+              })
+              .then(() => saveEvent.notifySuccess())
+              .catch(() => saveEvent.notifyFailure("Failed to save tab config."));
+          });
+
+          const updateValidity = () => {
+            const iss = issInput.value.trim();
+            if (iss) {
+              microsoftTeams.pages.config.setValidityState(true);
+              statusEl.textContent = "Configuration valid.";
+              statusEl.className = "ok";
+            } else {
+              microsoftTeams.pages.config.setValidityState(false);
+              statusEl.textContent = "Enter a FHIR Base URL to continue.";
+              statusEl.className = "";
+            }
+          };
+
+          issInput.addEventListener("input", updateValidity);
+          viewSelect.addEventListener("change", updateValidity);
+          updateValidity();
+        }).catch(() => {
+          statusEl.textContent = "Teams SDK unavailable (running outside Teams).";
+          statusEl.className = "error";
+        });
+      })();
+    </script>
+  </body>
+</html>
