@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "TEAMS_WEBHOOK_URL": "https://your-tenant.webhook.office.com/webhookb2/YOUR_WEBHOOK_ID/IncomingWebhook/YOUR_WEBHOOK_TOKEN",
+    "RIS_API_BASE_URL": "https://mock-ris.hospital.local/api",
+    "SCHEDULE_API_BASE_URL": "https://mock-schedule.hospital.local/api"
+  }
+}
