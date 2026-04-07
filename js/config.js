@@ -1,7 +1,7 @@
 // App configuration for SMART on FHIR EHR Launch.
 // Replace clientId with your registered app ID and baseUrl if you host elsewhere.
 window.APP_CONFIG = {
-  clientId: "YOUR_CLIENT_ID",
+  clientId: "cc344727-6f90-496c-94fd-c7829aa9a51d",
   scope: [
     "openid",
     "profile",
