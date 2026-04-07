@@ -3,9 +3,9 @@
 window.APP_CONFIG = {
   clientId: "cc344727-6f90-496c-94fd-c7829aa9a51d",
   scope: [
-    "openid",
-    "profile",
     "launch",
+    "openid",
+    "fhirUser",
     "launch/patient",
     "patient/Patient.read",
     "patient/DiagnosticReport.read",
