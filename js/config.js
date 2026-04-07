@@ -12,7 +12,7 @@ window.APP_CONFIG = {
     "patient/Observation.read",
     "patient/ImagingStudy.read",
   ].join(" "),
-  redirectUri: "./app.html",
+  redirectUri: "https://devbricker.github.io/SMOFR4-Demo/app.html",
   launchUri: "./launch.html",
   reportUri: "./report.html",
   ldctReportCodeSystem: "http://your-org.tw/fhir/CodeSystem/ldct",
