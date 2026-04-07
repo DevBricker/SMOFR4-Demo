@@ -23,6 +23,7 @@
     statusEl.textContent = "Starting SMART on FHIR authorization...";
     const options = {
       clientId: APP_CONFIG.clientId,
+      clientSecret: APP_CONFIG.clientSecret,
       scope: APP_CONFIG.scope,
       redirectUri: APP_CONFIG.redirectUri,
       iss: issValue,

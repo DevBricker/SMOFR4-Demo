@@ -2,6 +2,7 @@
 // Replace clientId with your registered app ID and baseUrl if you host elsewhere.
 window.APP_CONFIG = {
   clientId: "cc344727-6f90-496c-94fd-c7829aa9a51d",
+  clientSecret: "79f04b56b33491716c0880af72cdef7d3f0629111421cedd18353651cd313d9e",
   scope: [
     "launch",
     "openid",
